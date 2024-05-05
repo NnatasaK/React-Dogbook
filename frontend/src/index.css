@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+  margin: 0;
+  font-family: 'Quicksand';
+  color: #333;
+}
+
+a,
+ul,
+li {
+  cursor: pointer;
+  text-decoration: none;
+  list-style-type: none;
+  padding-inline-start: 0 !important;
+}
+
+body {
+  --border-light: 2px solid rgba(180, 180, 205, 0.288);
+
+}
+
+
+body {
+  height: 100vh;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header */
+
+/* Form */
+
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form label {
+  text-align: left;
+  display: block;
+}
+
+.form h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: rgba(46, 46, 46, 0.947);
+  margin-bottom: 30px;
+}
+
+.form input,
+.form textarea,
+.form select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+.form-btn {
+  background: rgb(138, 69, 241);
+  color: #fff;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-btn-delete {
+  background: none !important;
+  border: none;
+  font-size: 15px;
+}
+
+.form li {
+  font-size: 18px;
+}
+
+/* Footer */
+
+footer {
+  width: 100%;
+  /* border-top: 1px solid rgba(164, 164, 187, 0.393); */
+  /*  margin-top: 100px; */
+}
+
+.copy-right {
+  float: right;
+  padding: 15px;
+}
+
+.header {
+  margin: 20px;
+  font-size: 22px;
+
+}

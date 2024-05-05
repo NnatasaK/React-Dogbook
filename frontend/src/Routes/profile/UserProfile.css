@@ -1,0 +1,123 @@
+.profile-container {
+    margin-top: 40px;
+    border: 2px solid rgba(164, 164, 201, 0.304);
+    border-radius: 10px;
+    display: flex;
+    height: 500px;
+    max-width: 1000px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo-container {
+    margin: 20px;
+    max-width: 500px;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.profile-photo {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-back {
+    align-self: flex-end;
+
+}
+
+.link-go-back {
+    margin-left: 5px;
+    font-weight: 600;
+    color: rgb(138, 69, 241);
+}
+
+.info-top {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.info-bottom p {
+    padding: 3px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.info-top span {
+    font-size: 12px;
+    padding: 2px;
+}
+
+.info-top label {
+    display: inline-block;
+    position: relative;
+}
+
+input[type="checkbox"] {
+    margin-left: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid rgb(138, 69, 241);
+    cursor: pointer;
+}
+
+
+input[type="checkbox"]:checked {
+    background-color: rgb(138, 69, 241);
+
+}
+
+input[type="checkbox"]:checked::before {
+    content: "✔";
+    position: absolute;
+    left: 40%;
+    bottom: 56%;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.profile-btn a {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+.profile-btn {
+    background: rgb(138, 69, 241);
+    color: #fff;
+    margin-top: 10px;
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.profile-btn-delete {
+    background: rgb(241, 69, 69);
+    color: #fff;
+    margin: 10px;
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}

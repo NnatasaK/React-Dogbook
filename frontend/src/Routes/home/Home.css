@@ -1,0 +1,155 @@
+.home-page {
+    height: 80vh;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0 10px;
+    border-left: var(--border-light);
+    border-right: var(--border-light);
+
+}
+
+.right {
+
+    position: relative;
+    display: flex;
+    flex: 0.7;
+    justify-content: center;
+}
+
+.right p {
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-size: 25px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+.right p span {
+    display: inline-block;
+    padding: 2px;
+    color: rgba(67, 67, 67, 0.633);
+    opacity: 0;
+    animation: slideInText 7s infinite;
+    animation-delay: 100ms;
+}
+
+@keyframes slideInText {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+
+.right h1 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-size: 80px;
+    font-weight: 400;
+    color: rgba(64, 64, 64, 0.416);
+
+}
+
+.left {
+    flex: 0.3;
+    margin-left: 10px;
+}
+
+
+.right img {
+    margin: 10px;
+    width: 100%;
+    border-radius: 8px;
+    opacity: 50%;
+}
+
+.user-present {
+    color: rgb(65, 199, 65);
+}
+
+.not-present {
+    color: rgba(65, 65, 65, 0.737);
+}
+
+
+.user-link {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    /*  border-left: 2px solid rgba(164, 164, 201, 0.425); */
+    border-left: 2px solid rgba(164, 164, 201, 0.425);
+    /*  border-radius: 20px; */
+
+
+}
+
+.users-list li {
+    padding: 6px;
+    margin-left: 10px;
+
+}
+
+.users-list ul {
+    margin-top: 20px;
+
+}
+
+
+.btn-home {
+    background-color: rgb(138, 69, 241);
+    margin-top: 10px;
+    border: 0;
+    padding: 12px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.dog-icon {
+    fill: #ffffff !important;
+}
+
+.link-home {
+    color: #fefefe;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+.btn-delete {
+    background: none !important;
+    border: none;
+    font-size: 20px;
+}
