@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { RiDeleteBackLine } from "react-icons/ri";
 
 const UserForm = ({ handleSubmit, name, setName, nickname, setNickname, age, setAge, description, setDescription, addFriend, setAddFriend, users, handleFriendSelect, handleRemoveFriend }) => {
+    console.log("addFriend:", addFriend);
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -57,9 +58,12 @@ const UserForm = ({ handleSubmit, name, setName, nickname, setNickname, age, set
                     <ul>
                         {addFriend.map(friendId => {
                             const friend = users.find(user => user._id === friendId);
+                            console.log("friendId:", friendId);
+                            console.log("friend:", friend);
+                            console.log("users:", users);
                             return (
                                 <li key={friendId}>
-                                    <Link to={`/profile/${friendId}`} className={`user-link ${friend.isPresent ? "user-present" : "not-present"}`}>
+                                    <Link to={`/profile/${friendId}`} className={`user-link ${friend && friend.isPresent ? "user-present" : "not-present"}`}>
                                         @{friend?.nickname}
                                     </Link>
                                     <button className="form-btn-delete" type="button" onClick={() => handleRemoveFriend(friendId)}>

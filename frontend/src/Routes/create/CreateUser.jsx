@@ -7,25 +7,18 @@ import { useFormState } from '../../components/UserForm';
 import { FaDog } from "react-icons/fa6";
 import { RiDeleteBackLine } from "react-icons/ri";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { useAPI } from '../../userContext';
 
 const Create = () => {
     const { name, setName, nickname, setNickname, age, setAge, description, setDescription, addFriend, setAddFriend } = useFormState();
-    const [users, setUsers] = useState([]);
+    const { users, fetchUsers, createUser } = useAPI();
     const navigate = useNavigate();
+
 
     useEffect(() => {
         fetchUsers();
-    }, []);
+    }, [fetchUsers]);
 
-    const fetchUsers = async () => {
-
-        try {
-            const response = await axios.get('http://localhost:8000/users');
-            setUsers(response.data);
-        } catch (error) {
-            console.error('Error fetching users:', error);
-        }
-    };
 
     const handleFriendSelect = (friendId) => {
         if (!addFriend.includes(friendId)) {
@@ -40,7 +33,7 @@ const Create = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/users', {
+            await createUser({
                 name,
                 nickname,
                 age: parseInt(age),

@@ -1,60 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import './UserProfile.css';
 import { TiArrowBackOutline } from "react-icons/ti";
 import { RiDeleteBackLine } from "react-icons/ri";
-
+import { useAPI } from '../../userContext';
 
 const Profile = ({ }) => {
 
     const [isPresent, setIsPresent] = useState(false);
-    const [userProfile, setUserProfile] = useState(null);
+    /*  const [userProfile, setUserProfile] = useState(null); */
+    const { fetchUser, userProfile, deleteUser, deleteFriend } = useAPI();
     const [profilePhoto, setProfilePhoto] = useState(null);
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetchUserProfile();
+        fetchUser(id);
     }, [id]);
 
-
+    useEffect(() => {
+        if (userProfile) {
+            setIsPresent(userProfile.isPresent);
+        }
+    }, [userProfile]);
 
     useEffect(() => {
         fetchProfilePhoto();
     }, []);
 
-    const fetchUserProfile = async () => {
+    const handleDeleteUser = async () => {
         try {
-
-            const response = await axios.get(`http://localhost:8000/users/${id}`);
-            setUserProfile(response.data);
-            setIsPresent(response.data.isPresent);
-
-        } catch (error) {
-            console.error('Error fetching user profile:', error);
-        }
-    };
-
-    const deleteUser = async () => {
-        try {
-            await axios.delete(`http://localhost:8000/users/${id}`);
-            window.location.href = "/";
+            await deleteUser(id);
+            navigate('/');
         } catch (error) {
             console.error('Error deleting user:', error);
         }
     };
-
-    const deleteFriend = async (friendId) => {
-        try {
-            await axios.delete(`http://localhost:8000/users/${id}/friends/${friendId}`);
-            setUserProfile(prevProfile => ({
-                ...prevProfile,
-                friendsList: prevProfile.friendsList.filter(user => user._id !== friendId)
-            }));
-        } catch (error) {
-            console.error('Error deleting friend:', error);
-        }
-    };
+    /*    const fetchUserProfile = async () => {
+           try {
+   
+               const response = await axios.get(`http://localhost:8000/users/${id}`);
+               setUserProfile(response.data);
+               setIsPresent(response.data.isPresent);
+   
+           } catch (error) {
+               console.error('Error fetching user profile:', error);
+           }
+       }; */
+    /* 
+        const deleteUser = async () => {
+            try {
+                await axios.delete(`http://localhost:8000/users/${id}`);
+                window.location.href = "/";
+            } catch (error) {
+                console.error('Error deleting user:', error);
+            }
+        };
+    
+        const deleteFriend = async (friendId) => {
+            try {
+                await axios.delete(`http://localhost:8000/users/${id}/friends/${friendId}`);
+                setUserProfile(prevProfile => ({
+                    ...prevProfile,
+                    friendsList: prevProfile.friendsList.filter(user => user._id !== friendId)
+                }));
+            } catch (error) {
+                console.error('Error deleting friend:', error);
+            }
+        }; */
     const fetchProfilePhoto = async () => {
         try {
             const response = await axios.get('https://dog.ceo/api/breeds/image/random');
@@ -116,7 +130,7 @@ const Profile = ({ }) => {
                             {userProfile.friendsList.map(user => (
                                 <li key={user._id}>
                                     <Link to={`/profile/${user._id}`} className={`user-link ${user.isPresent ? "user-present" : "not-present"}`}>@{user.nickname}</Link>
-                                    <button className='btn-delete' onClick={() => deleteFriend(user._id)}>
+                                    <button className='btn-delete' onClick={() => deleteFriend(id, user._id)}>
                                         <RiDeleteBackLine />
                                     </button>
                                 </li>
@@ -125,7 +139,7 @@ const Profile = ({ }) => {
                         <button className='profile-btn'>
                             <Link to={`/edit/${userProfile._id}`}>Edit</Link>
                         </button>
-                        <button className='profile-btn-delete' onClick={deleteUser}>
+                        <button className='profile-btn-delete' onClick={handleDeleteUser}>
                             Delete
                         </button>
                     </div>
