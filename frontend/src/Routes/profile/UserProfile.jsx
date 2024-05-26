@@ -6,6 +6,8 @@ import { TiArrowBackOutline } from "react-icons/ti";
 import { RiDeleteBackLine } from "react-icons/ri";
 import { useAPI } from '../../userContext';
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
 const Profile = ({ }) => {
 
     const [isPresent, setIsPresent] = useState(false);
@@ -83,7 +85,7 @@ const Profile = ({ }) => {
 
             const updatedPresence = !isPresent;
             setIsPresent(updatedPresence);
-            await axios.patch(`http://localhost:8000/users/${id}`, { isPresent: updatedPresence });
+            await axios.patch(`${apiBaseUrl}/users/${id}`, { isPresent: updatedPresence });
         } catch (error) {
             console.error('Error updating presence status:', error);
         }

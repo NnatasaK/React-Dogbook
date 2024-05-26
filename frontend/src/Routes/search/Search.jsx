@@ -5,7 +5,7 @@ import { BsXCircleFill } from "react-icons/bs";
 import './SearchField.css'
 import { Link } from 'react-router-dom';
 
-
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 function Search() {
 
@@ -55,7 +55,7 @@ function Search() {
     useEffect(() => {
 
         if (query !== "") {
-            fetch(`http://localhost:8000/search?q=${query}`)
+            fetch(`${apiBaseUrl}/search?q=${query}`)
                 .then(res => res.json())
                 .then(data => setSearchData(data))
                 .catch(error => console.error('Error fetching data:', error));
