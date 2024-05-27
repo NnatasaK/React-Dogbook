@@ -4,18 +4,18 @@ import axios from 'axios';
 const userContext = createContext();
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-
 export const UserProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
-    const [userProfile, setUserProfile] = useState([]);
+    const [userProfile, setUserProfile] = useState({}); // Initialize as an object
 
-    const fetchUser = async (userId) => { // Change id to userId
+    const fetchUser = async (userId) => {
         try {
-            const response = await axios.get(`${apiBaseUrl}/users/${userId}`); // Use userId
+            const response = await axios.get(`${apiBaseUrl}/users/${userId}`);
             setUserProfile(response.data);
             return response;
         } catch (error) {
             console.error('Error fetching user:', error);
+            throw error; // Rethrow to be caught in the component
         }
     };
 
